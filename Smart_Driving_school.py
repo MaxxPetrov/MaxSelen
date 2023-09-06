@@ -84,7 +84,10 @@ class LetCodeTest(TestCase):
         time.sleep(2)
         Select(driver.find_element(By.ID, "id_sex")).select_by_value(str(random.randint(0, 2)))
         time.sleep(2)
+
         Select(driver.find_element(By.ID, "id_ID_state")).select_by_value(str(random.randint(7, 15)))
+
+
         Select(driver.find_element(By.NAME, "state")).select_by_value(str(random.randint(7, 15)))
 
         driver.find_element(By.NAME, "_save").click()
