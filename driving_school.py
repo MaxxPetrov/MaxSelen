@@ -56,6 +56,7 @@ class DrivingScholl(Maxselen):
 
 
 
+
 if __name__ == "__main__":
     obj = DrivingScholl()
     # obj.add_person()
