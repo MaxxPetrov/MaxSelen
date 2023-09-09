@@ -62,10 +62,11 @@ class Maxselen:
     def select_id(self, elem_id, value):
         Select(self.Web.find_element(ID, elem_id)).select_by_value(value)
 
+    def select_name(self, elem_id, value):
+        Select(self.Web.find_element(NAME, elem_id)).select_by_value(value)
+
 
 if __name__ == "__main__":
     first = Maxselen("Firefox")
     first.Web.get("https://google.com")
     time.sleep(10)
-
-    print("test 2", __name__)

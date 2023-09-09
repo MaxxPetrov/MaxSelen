@@ -14,6 +14,7 @@ import random
 from selenium.webdriver.support import expected_conditions as EC
 import string
 
+
 # fake = Faker()
 
 
@@ -86,7 +87,6 @@ class LetCodeTest(TestCase):
         time.sleep(2)
 
         Select(driver.find_element(By.ID, "id_ID_state")).select_by_value(str(random.randint(7, 15)))
-
 
         Select(driver.find_element(By.NAME, "state")).select_by_value(str(random.randint(7, 15)))
 
