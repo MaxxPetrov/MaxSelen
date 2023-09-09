@@ -43,7 +43,7 @@ class DrivingScholl(Maxselen):
     def state_fill(self):
         self.login()
         # self.Web(CLASS, "model-state current-model") # не могу найти класс в классе
-        self.Web(XPATH, "//a[contains(@title,'Models in the Geo application')]").click()
+        self.Web(XPATH, "//a[contains(.,'States')]").click() # не работает а на старой работает
         time.sleep(1)
         self.Web(XPATH, '//a[contains(.,"Add state")]').click()
         self.type_to_xpath(postal, fake.state_abbr())
@@ -51,10 +51,6 @@ class DrivingScholl(Maxselen):
         self.select_id("id_time_zone", str(random.randint(0, 5)))
         self.Web(NAME, "_save").click()
         time.sleep(1)
-
-
-
-
 
 
 if __name__ == "__main__":
