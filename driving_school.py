@@ -9,7 +9,7 @@ class DrivingScholl(Maxselen):
     def __init__(self):
         super().__init__()
 
-    def login(self):
+    def login_admin(self):
         self.Web.get(URL)
         self.Web.find_element(NAME, "username").send_keys(USER)
         self.Web.find_element(NAME, "password").send_keys(PASSWORD)
@@ -40,17 +40,27 @@ class DrivingScholl(Maxselen):
         self.Web.find_element(NAME, "_save").click()
         time.sleep(1)
 
+    def add_persons(self, count):
+        for i in range(count):
+            self.add_person()
+
+
     def state_fill(self):
-        self.login()
+        self.login_admin()
         # self.Web(CLASS, "model-state current-model") # не могу найти класс в классе
-        self.Web(XPATH, "//a[contains(.,'States')]").click() # не работает а на старой работает
+        self.click_to_xpath("//a[contains(text(),'States')]")
         time.sleep(1)
-        self.Web(XPATH, '//a[contains(.,"Add state")]').click()
-        self.type_to_xpath(postal, fake.state_abbr())
-        self.type_to_xpath(state, fake.state())
-        self.select_id("id_time_zone", str(random.randint(0, 5)))
-        self.Web(NAME, "_save").click()
-        time.sleep(1)
+        self.click_to_xpath('//a[contains(.,"Add state")]')
+        for PN, state_item in states_info.items():
+            self.type_to_xpath(postal, PN)
+            self.type_to_xpath(state, state_item[0])
+            print(state_item[1])
+            time.sleep(1)
+            self.select_id("id_time_zone", state_item[1])
+            time.sleep(2)
+            self.click_to_name("_addanother")
+            time.sleep(2)
+
 
 
 if __name__ == "__main__":

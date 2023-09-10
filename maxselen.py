@@ -50,20 +50,34 @@ class Maxselen:
             opts = webdriver.EdgeOptions()
             self.Web = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()), options=opts)
 
-
         else:
             raise ValueError(f"Unsupported browser: {browser}")
 
         self.Web.maximize_window()
 
+        element = None
+
+
+
+
+    def click_to_xpath(self, x_path):
+        self.Web.find_element(XPATH, x_path).click()
+
+    def click_to_name(self, name):
+        self.Web.find_element(NAME, name).click()
+
     def type_to_xpath(self, x_path, text):
         self.Web.find_element(XPATH, x_path).send_keys(text)
 
     def select_id(self, elem_id, value):
-        Select(self.Web.find_element(ID, elem_id)).select_by_value(value)
+        Select(self.Web.find_element(ID, elem_id)).select_by_visible_text(value)
 
     def select_name(self, elem_id, value):
         Select(self.Web.find_element(NAME, elem_id)).select_by_value(value)
+
+    def click_to_class_class(self, name, name2):
+        self.Web.find_element(CLASS, name).find_element(CLASS, name2).click()
+
 
 
 if __name__ == "__main__":
